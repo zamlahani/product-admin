@@ -10,3 +10,13 @@ export const useProducts = () => {
     },
   })
 }
+
+export const useCategories = () => {
+  return useQuery({
+    queryKey: ['categories'],
+    queryFn: async () => {
+      const { data } = await axios.get('https://dummyjson.com/products/categories')
+      return data
+    },
+  })
+}
