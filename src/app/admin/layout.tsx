@@ -33,14 +33,15 @@ const App: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <QueryClientProvider client={queryClient}>
       <Layout>
         <Sider breakpoint="lg" collapsedWidth="0">
-          <Menu
-            theme="dark"
-            mode="inline"
-            items={menuItems.map((val) => ({
-              ...val,
-              label: <Link key={val.key} href={val.pathname}>{val.label}</Link>,
-            }))}
-          />
+          <ul>
+            {menuItems.map((val) => (
+              <li key={val.key}>
+                <Link key={val.key} href={val.pathname}>
+                  {val.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </Sider>
         <Layout>
           <Header style={{ padding: '0px', color: 'white', display: 'flex', alignItems: 'center' }}>
