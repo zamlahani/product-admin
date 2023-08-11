@@ -4,14 +4,14 @@ import React from 'react'
 import { Layout, Menu, Typography } from 'antd'
 import Link from 'next/link'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { usePathname } from 'next/navigation'
+// import { usePathname } from 'next/navigation'
 
 const queryClient = new QueryClient()
 
 const { Header, Content, Sider } = Layout
 
 const App: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const pathname = usePathname()
+  // const pathname = usePathname()
   const menuItems = [
     {
       key: 'overview',
@@ -36,7 +36,6 @@ const App: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <Menu
             theme="dark"
             mode="inline"
-            selectedKeys={[menuItems.find((val) => pathname.includes(val.pathname))?.key || '']}
             items={menuItems.map((val) => ({
               ...val,
               label: <Link key={val.key} href={val.pathname}>{val.label}</Link>,
