@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { Button, Col, Input, Row, Select, Slider, Table, Typography } from 'antd'
 import { useCategories, useProducts } from '@/service'
+import useLocalStorage from 'use-local-storage'
 
 const { Title } = Typography
 
@@ -39,10 +40,10 @@ const Page = () => {
     },
   ]
   const initialPriceRange: Range = [0, 10000]
-  const [searchQuery, setSearchQuery] = useState('')
-  const [selectedBrand, setSelectedBrand] = useState('')
-  const [priceRange, setPriceRange] = useState<Range>(initialPriceRange)
-  const [selectedCategory, setSelectedCategory] = useState('')
+  const [searchQuery, setSearchQuery] = useLocalStorage('searchQuery', '')
+  const [selectedBrand, setSelectedBrand] = useLocalStorage('selectedBrand', '')
+  const [priceRange, setPriceRange] = useLocalStorage<Range>('priceRange', initialPriceRange)
+  const [selectedCategory, setSelectedCategory] = useLocalStorage('selectedCategory', '')
   const [appliedFilter, setAppliedFilter] = useState<{
     searchQuery?: string
     selectedBrand?: string
@@ -91,14 +92,14 @@ const Page = () => {
     <div>
       <Title>Products</Title>
       <Row gutter={[16, 16]} justify={'end'}>
-        <Col span={8} offset={16}>
+        <Col xs={{ span: 24 }} md={{ span: 8, offset: 16 }}>
           <Input
             placeholder="Search Product"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </Col>
-        <Col span={8}>
+        <Col xs={{ span: 24 }} md={{ span: 8 }}>
           <Typography>Brand :</Typography>
           <Select
             style={{ width: '100%' }}
@@ -107,7 +108,7 @@ const Page = () => {
             options={brands.map((val) => ({ label: val, value: val }))}
           />
         </Col>
-        <Col span={8}>
+        <Col xs={{ span: 24 }} md={{ span: 8 }}>
           <Typography>Price Range :</Typography>
           <Slider
             range
@@ -118,7 +119,7 @@ const Page = () => {
             value={priceRange}
           />
         </Col>
-        <Col span={8}>
+        <Col xs={{ span: 24 }} md={{ span: 8 }}>
           <Typography>Category :</Typography>
           <Select
             style={{ width: '100%' }}
