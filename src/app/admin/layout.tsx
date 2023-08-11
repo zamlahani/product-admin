@@ -45,9 +45,9 @@ const App: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </Sider>
         <Layout>
           <Header style={{ padding: '0px', color: 'white', display: 'flex', alignItems: 'center' }}>
-            <Typography style={{ marginLeft: '24px', color: 'white', fontSize: '24px' }}>
+            <Typography.Text style={{ marginLeft: '24px', color: 'white', fontSize: '24px' }}>
               Admin Dashboard
-            </Typography>
+            </Typography.Text>
           </Header>
           <Content style={{ padding: '24px', minHeight: 'calc(100vh - 64px)' }}>{children}</Content>
         </Layout>

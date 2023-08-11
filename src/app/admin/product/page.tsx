@@ -106,7 +106,7 @@ const Page = () => {
           />
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 8 }}>
-          <Typography>Brand :</Typography>
+          <Typography.Text>Brand :</Typography.Text>
           <Select
             style={{ width: '100%' }}
             onChange={(val) => setSelectedBrand(val)}
@@ -115,7 +115,7 @@ const Page = () => {
           />
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 8 }}>
-          <Typography>Price Range :</Typography>
+          <Typography.Text>Price Range :</Typography.Text>
           <Slider
             range
             min={0}
@@ -126,7 +126,7 @@ const Page = () => {
           />
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 8 }}>
-          <Typography>Category :</Typography>
+          <Typography.Text>Category :</Typography.Text>
           <Select
             style={{ width: '100%' }}
             onChange={(val) => setSelectedCategory(val)}
