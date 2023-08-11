@@ -1,11 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Layout, Typography } from 'antd'
+import { Layout, Menu, Typography } from 'antd'
 import Link from 'next/link'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // import { useRouter } from "next/navigation"
-import { Btn } from "@/components"
 // import { usePathname } from 'next/navigation'
 
 const queryClient = new QueryClient()
@@ -36,15 +35,14 @@ const App: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <QueryClientProvider client={queryClient}>
       <Layout>
         <Sider breakpoint="lg" collapsedWidth="0">
-          <ul>
-            {menuItems.map((val) => (
-              <li key={val.key}>
-                <Link key={val.key} href={val.pathname}>
-                  {val.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Menu
+            theme="dark"
+            mode="inline"
+            items={menuItems.map((val) => ({
+              ...val,
+              label: <Link key={val.key} href={val.pathname}>{val.label}</Link>,
+            }))}
+          />
         </Sider>
         <Layout>
           <Header style={{ padding: '0px', color: 'white', display: 'flex', alignItems: 'center' }}>
@@ -53,7 +51,6 @@ const App: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </Typography.Text>
           </Header>
           <Content style={{ padding: '24px', minHeight: 'calc(100vh - 64px)' }}>
-            <Btn />
             {children}</Content>
         </Layout>
       </Layout>
