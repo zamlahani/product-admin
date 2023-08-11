@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Layout, Menu, Typography } from 'antd'
+import { Layout, Typography } from 'antd'
 import Link from 'next/link'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // import { usePathname } from 'next/navigation'
