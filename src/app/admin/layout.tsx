@@ -49,7 +49,9 @@ const App: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               Admin Dashboard
             </Typography.Text>
           </Header>
-          <Content style={{ padding: '24px', minHeight: 'calc(100vh - 64px)' }}>{children}</Content>
+          <Content style={{ padding: '24px', minHeight: 'calc(100vh - 64px)' }}>
+            <Link href={'/admin/product'} >product</Link>
+            {children}</Content>
         </Layout>
       </Layout>
     </QueryClientProvider>
