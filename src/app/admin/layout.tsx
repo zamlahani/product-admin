@@ -1,9 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Layout, Typography } from 'antd'
+import { Button, Layout, Typography } from 'antd'
 import Link from 'next/link'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { useRouter } from "next/navigation"
 // import { usePathname } from 'next/navigation'
 
 const queryClient = new QueryClient()
@@ -12,6 +13,7 @@ const { Header, Content, Sider } = Layout
 
 const App: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // const pathname = usePathname()
+  const router=useRouter()
   const menuItems = [
     {
       key: 'overview',
@@ -50,7 +52,7 @@ const App: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </Typography.Text>
           </Header>
           <Content style={{ padding: '24px', minHeight: 'calc(100vh - 64px)' }}>
-            <Link href={'/admin/product'} >product</Link>
+            <Button onClick={()=>router.push('/admin/product')} >product</Button>
             {children}</Content>
         </Layout>
       </Layout>
