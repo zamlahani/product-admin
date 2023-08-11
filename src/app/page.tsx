@@ -13,11 +13,11 @@ const App: React.FC = () => {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const onFinish = (values: any) => {
-    console.log('values:', values)
+    // console.log('values:', values)
     setIsLoading(true)
     signIn('credentials', { username: values.username, password: values.password, redirect: false })
       .then((result) => {
-        console.log('result:', result)
+        // console.log('result:', result)
         setIsLoading(false)
         if (result?.error) {
           setError(result.error)
