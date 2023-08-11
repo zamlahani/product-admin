@@ -89,7 +89,10 @@ const Page = ({ params }: { params: { id: string } }) => {
           <>
             <Descriptions title="Details" bordered items={items} column={2} />
             <div style={{ marginTop: '16px' }}>
-              <Table columns={columns} dataSource={data?.products} />
+              <Table
+                columns={columns}
+                dataSource={data?.products.map((val: any) => ({ ...val, key: val.id }))}
+              />
             </div>
           </>
         )}

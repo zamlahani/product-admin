@@ -14,6 +14,7 @@ type Product = {
   price: number
   title: string
   category: string
+  id: number
 }
 
 type Range = [number, number]
@@ -91,6 +92,7 @@ const Page = () => {
       const [min, max] = appliedFilter.priceRange
       return min <= val.price && val.price <= max
     })
+    .map((val) => ({ ...val, key: val.id }))
 
   const maxPrice = Math.max(...products.map((val) => val.price))
 

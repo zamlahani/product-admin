@@ -54,7 +54,7 @@ const Page = () => {
     },
   })
   // console.log('data:', data)
-  const tableData = data?.carts
+  const tableData = data?.carts.map((val: any) => ({ ...val, key: val.id }))
   return (
     <div>
       <Title>Carts</Title>
