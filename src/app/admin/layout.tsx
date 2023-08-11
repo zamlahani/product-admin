@@ -39,7 +39,7 @@ const App: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             selectedKeys={[menuItems.find((val) => pathname.includes(val.pathname))?.key || '']}
             items={menuItems.map((val) => ({
               ...val,
-              label: <Link href={val.pathname}>{val.label}</Link>,
+              label: <Link key={val.key} href={val.pathname}>{val.label}</Link>,
             }))}
           />
         </Sider>
