@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { Button, Col, Input, Row, Select, Slider, Table, Typography } from 'antd'
 import { useCategories, useProducts } from '@/service'
 import useLocalStorage from 'use-local-storage'
+import { Currency, NumericNumber } from '@/components'
+import { ColumnType } from 'antd/es/table'
 
 const { Title } = Typography
 
@@ -17,7 +19,7 @@ type Product = {
 type Range = [number, number]
 
 const Page = () => {
-  const columns = [
+  const columns: ColumnType<Product>[] = [
     {
       title: 'Product Name',
       dataIndex: 'title',
@@ -29,10 +31,14 @@ const Page = () => {
     {
       title: 'Price',
       dataIndex: 'price',
+      align: 'right',
+      render: (val: any) => <Currency value={val} />,
     },
     {
       title: 'Stock',
       dataIndex: 'stock',
+      align: 'right',
+      render: (val: any) => <NumericNumber value={val} />,
     },
     {
       title: 'Category',

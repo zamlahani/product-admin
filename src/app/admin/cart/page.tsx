@@ -4,11 +4,13 @@ import { Table, Typography } from 'antd'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import Link from 'next/link'
+import { Currency, NumericNumber } from '@/components'
+import { ColumnType } from 'antd/es/table'
 
 const { Title } = Typography
 
 const Page = () => {
-  const columns = [
+  const columns: ColumnType<any>[] = [
     {
       title: 'ID',
       dataIndex: 'id',
@@ -21,18 +23,26 @@ const Page = () => {
     {
       title: 'Total Products',
       dataIndex: 'totalProducts',
+      align: 'right',
+      render: (val: any) => <NumericNumber value={val} />,
     },
     {
       title: 'Total Qty.',
       dataIndex: 'totalQuantity',
+      align: 'right',
+      render: (val: any) => <NumericNumber value={val} />,
     },
     {
       title: 'Total',
       dataIndex: 'total',
+      align: 'right',
+      render: (val: any) => <Currency value={val} />,
     },
     {
       title: 'Discounted Total',
       dataIndex: 'discountedTotal',
+      align: 'right',
+      render: (val: any) => <Currency value={val} />,
     },
   ]
   // const queryClient = useQueryClient()
