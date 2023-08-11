@@ -58,6 +58,7 @@ const Page = () => {
   return (
     <div>
       <Title>Carts</Title>
+      <Link href={'/admin/product'}>product</Link>
       <div>
         {isLoading ? (
           'Loading Cart Table Data'
