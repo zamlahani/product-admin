@@ -14,12 +14,19 @@ const App: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const pathname = usePathname()
   const menuItems = [
     {
+      key: 'overview',
+      pathname: '/admin/overview',
+      label: 'Overview',
+    },
+    {
       key: 'product',
-      label: <Link href={'/admin/product'}>Product</Link>,
+      pathname: '/admin/product',
+      label: 'Product',
     },
     {
       key: 'cart',
-      label: <Link href={'/admin/cart'}>Cart</Link>,
+      pathname: '/admin/cart',
+      label: 'Cart',
     },
   ]
   return (
@@ -29,8 +36,11 @@ const App: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <Menu
             theme="dark"
             mode="inline"
-            selectedKeys={[menuItems.find(({ key }) => pathname.includes(key))?.key || '']}
-            items={menuItems}
+            selectedKeys={[menuItems.find((val) => pathname.includes(val.pathname))?.key || '']}
+            items={menuItems.map((val) => ({
+              ...val,
+              label: <Link href={val.pathname}>{val.label}</Link>,
+            }))}
           />
         </Sider>
         <Layout>

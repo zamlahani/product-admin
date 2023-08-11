@@ -1,9 +1,11 @@
 'use client'
 import React from 'react'
-import { Table } from 'antd'
+import { Table, Typography } from 'antd'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import Link from 'next/link'
+
+const { Title } = Typography
 
 const Page = () => {
   const columns = [
@@ -45,6 +47,7 @@ const Page = () => {
   const tableData = data?.carts
   return (
     <div>
+      <Title>Carts</Title>
       <div>
         {isLoading ? (
           'Loading Cart Table Data'

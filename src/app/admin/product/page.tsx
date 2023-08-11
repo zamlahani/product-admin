@@ -1,8 +1,9 @@
 'use client'
 import React, { useState } from 'react'
-import { Col, Input, Row, Table } from 'antd'
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+import { Col, Input, Row, Table, Typography } from 'antd'
+import { useProducts } from '@/service'
+
+const { Title } = Typography
 
 const Page = () => {
   const columns = [
@@ -28,18 +29,12 @@ const Page = () => {
     },
   ]
   const [searchQuery, setSearchQuery] = useState('')
-  // const queryClient = useQueryClient()
-  const { isLoading, data, error } = useQuery({
-    queryKey: ['products'],
-    queryFn: async () => {
-      const { data } = await axios.get('https://dummyjson.com/products?limit=0')
-      return data
-    },
-  })
+  const { isLoading, data, error } = useProducts()
   // console.log('data:', data)
   const tableData = data?.products
   return (
     <div>
+      <Title>Products</Title>
       <Row>
         <Col span={8} offset={16}>
           <Input
@@ -49,7 +44,7 @@ const Page = () => {
           />
         </Col>
       </Row>
-      <div style={{marginTop:"16px"}}>
+      <div style={{ marginTop: '16px' }}>
         {isLoading ? (
           'Loading Table Data'
         ) : error ? (
